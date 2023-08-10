@@ -1,0 +1,39 @@
+<!doctype html>
+<header id="store">
+
+  <h1>Greengrocers</h1>
+
+  <ul class="item-list store--item-list">
+    <app-store *ngFor="let item of filteredGroceries" [item]="item" (addToCart)="addToCart($event)"></app-store>
+  </ul>
+
+</header>
+<div class="buttons-display">
+  <button [class.clicked]="isFruitButtonClicked" class="show-button" (click)="showOnlyFruits()">Show fruits</button>
+
+  <button [class.clicked]="isVegetableButtonClicked" class="show-button"
+    (click)="showOnlyVegetables()">Show vegetables</button>
+
+  <button [class.clicked]="isEverythingButtonClicked" class="show-button" (click)="showEverything()">Show all</button>
+
+  <button class="show-button" (click)="sortByPrice()">{{ priceSorting}}</button>
+
+  <button class="show-button" (click)="sortByName()">{{ nameSorting}}</button>
+</div>
+<main>
+
+  <h2>Your Cart</h2>
+
+  <div class="cart-section">
+
+    <div class="cart--item-list-container">
+      <app-cart></app-cart>
+    </div>
+
+  </div>
+
+</main>
+
+<div class="total-section">
+  <app-total></app-total>
+</div>
